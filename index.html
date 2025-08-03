@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>You & Hue — Style DNA Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --pink: #eb5d98;
+    --purple: #b18cff;
+    --charcoal: #2d2d2d;
+    --white-bg: #fff0f2;
+    --yellow: #ffc75f;
+  }
+
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white-bg);
+    color: var(--charcoal);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Brush stroke shapes */
+  .brush {
+    position: absolute;
+    border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+    opacity: 0.15;
+    filter: blur(18px);
+    transform: rotate(-20deg);
+    z-index: 0;
+  }
+  .brush1 {
+    width: 320px;
+    height: 250px;
+    background: var(--pink);
+    top: -50px;
+    left: -70px;
+  }
+  .brush2 {
+    width: 260px;
+    height: 200px;
+    background: var(--purple);
+    bottom: -70px;
+    right: -80px;
+  }
+
+  header {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 4rem;
+    color: var(--pink);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    user-select: none;
+    text-shadow:
+      3px 3px var(--yellow),
+      -2px -2px var(--purple);
+  }
+
+  .tagline {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+    color: var(--charcoal);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .start-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    background-color: var(--pink);
+    color: white;
+    padding: 1.1rem 3.2rem;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
+    box-shadow:
+      0 5px 15px rgba(235, 93, 152, 0.6);
+    position: relative;
+    z-index: 1;
+    user-select: none;
+  }
+  .start-btn:hover {
+    background-color: var(--purple);
+    box-shadow:
+      0 7px 22px rgba(177, 140, 255, 0.8);
+    transform: translateY(-5px) scale(1.05);
+  }
+  .start-btn:active {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  /* Fun handwritten accent */
+  .accent-text {
+    font-family: 'Comic Neue', cursive;
+    color: var(--yellow);
+    font-size: 1.1rem;
+    margin-top: -20px;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    header {
+      font-size: 2.8rem;
+    }
+    .tagline {
+      font-size: 1.3rem;
+    }
+    .start-btn {
+      font-size: 1.3rem;
+      padding: 0.9rem 2.6rem;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="brush brush1"></div>
+  <div class="brush brush2"></div>
+
+  <header>You & Hue</header>
+  <div class="tagline">Find your true style with you &amp; hue.</div>
+  <div class="accent-text">Discover the colors and styles written in your soul.</div>
+  <button class="start-btn" onclick="location.href='intro.html'">Start the Quiz</button>
+</body>
+</html>
