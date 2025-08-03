@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>You & Hue — Intro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat&family=Comic+Neue&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink: #eb5d98;
+      --purple: #b18cff;
+      --charcoal: #2d2d2d;
+      --white-bg: #fff0f2;
+      --yellow: #ffc75f;
+    }
+
+    body {
+      margin: 0; padding: 2rem 1rem 3rem;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--white-bg);
+      color: var(--charcoal);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 3rem;
+      color: var(--pink);
+      text-align: center;
+      margin-bottom: 0.25rem;
+      user-select: none;
+      text-shadow:
+        2px 2px var(--yellow);
+    }
+
+    p.intro-text {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-style: italic;
+      color: var(--charcoal);
+    }
+
+    ul.delivery-list {
+      list-style: none;
+      padding-left: 0;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    ul.delivery-list li {
+      background: var(--purple);
+      color: white;
+      margin-bottom: 1rem;
+      padding: 1rem 1rem 1rem 4rem;
+      border-radius: 12px;
+      position: relative;
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(177, 140, 255, 0.4);
+      user-select: none;
+    }
+    ul.delivery-list li::before {
+      content: '🖼️';
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.6rem;
+      color: var(--yellow);
+    }
+
+    /* Placeholder images below each item */
+    .image-placeholder {
+      width: 100%;
+      height: 140px;
+      background: var(--pink);
+      border-radius: 10px;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      filter: brightness(0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white-bg);
+      font-weight: 700;
+      font-size: 1.1rem;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(235, 93, 152, 0.5);
+    }
+
+    form.newsletter {
+      width: 100%;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: 1rem;
+    }
+    form.newsletter label {
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+      user-select: none;
+    }
+    form.newsletter input[type="email"] {
+      width: 80%;
+      padding: 0.8rem 1rem;
+      border: 2px solid var(--purple);
+      border-radius: 35px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    form.newsletter input[type="email"]:focus {
+      border-color: var(--pink);
+    }
+    form.newsletter button {
+      margin-top: 1rem;
+      background-color: var(--pink);
+      border: none;
+      color: white;
+      padding: 0.9rem 2.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 35px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(235, 93, 152, 0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    form.newsletter button:hover {
+      background-color: var(--purple);
+      box-shadow: 0 7px 22px rgba(177, 140, 255, 0.8);
+    }
+
+    /* Navigation buttons */
+    .nav-buttons {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 3rem;
+    }
+    .btn-next {
+      background-color: var(--pink);
+      border: none;
+      color: white;
+      padding: 0.85rem 2.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 35px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(235, 93, 152, 0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-next:hover {
+      background-color: var(--purple);
+      box-shadow: 0 7px 22px rgba(177, 140, 255, 0.8);
+    }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: 2.4rem;
+      }
+      p.intro-text {
+        font-size: 1rem;
+      }
+      ul.delivery-list li {
+        font-size: 1rem;
+        padding-left: 3.2rem;
+      }
+      .image-placeholder {
+        height: 120px;
+        font-size: 1rem;
+      }
+      form.newsletter input[type="email"] {
+        width: 100%;
+      }
+      form.newsletter button {
+        width: 100%;
+      }
+      .nav-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>You & Hue</header>
+  <p class="intro-text">Here’s what you get when you buy the Style DNA Quiz Kit delivery package:</p>
+
+  <ul class="delivery-list">
+    <li>
+      Personalized color palette curated for your style
+      <div class="image-placeholder">Image Placeholder</div>
+    </li>
+    <li>
+      Custom outfit combinations and shopping lists
+      <div class="image-placeholder">Image Placeholder</div>
+    </li>
+    <li>
+      Style tips and trend insights tailored to you
+      <div class="image-placeholder">Image Placeholder</div>
+    </li>
+    <li>
+      Access to a private style community & updates
+      <div class="image-placeholder">Image Placeholder</div>
+    </li>
+  </ul>
+
+  <form class="newsletter" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+    <label for="email">Want to stay in the style loop? Drop your email below!</label>
+    <input type="email" id="email" name="email" placeholder="Your email address" required />
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <div class="nav-buttons">
+    <button class="btn-next" onclick="location.href='quiz-1.html'">Start Quiz</button>
+  </div>
+</body>
+</html>

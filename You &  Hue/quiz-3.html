@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>You & Hue — Quiz Question 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --pink: #eb5d98;
+    --purple: #b18cff;
+    --charcoal: #2d2d2d;
+    --white-bg: #fff0f2;
+    --yellow: #ffc75f;
+  }
+  body {
+    margin: 0; padding: 2rem 1rem 3rem;
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white-bg);
+    color: var(--charcoal);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 2.8rem;
+    color: var(--pink);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    user-select: none;
+    text-shadow:
+      2px 2px var(--yellow);
+  }
+  .instructions {
+    font-style: italic;
+    color: var(--charcoal);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .progress-bar-container {
+    width: 100%;
+    background: var(--purple);
+    border-radius: 20px;
+    height: 12px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 12px;
+    width: 30%;
+    background: var(--pink);
+    border-radius: 20px 0 0 20px;
+    transition: width 0.4s ease;
+  }
+  form {
+    flex-grow: 1;
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 3rem 0;
+  }
+  legend {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    user-select: none;
+  }
+  label {
+    display: block;
+    background: var(--purple);
+    color: white;
+    margin-bottom: 1rem;
+    padding: 1rem 1.2rem;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(177, 140, 255, 0.5);
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  label:hover {
+    background: var(--pink);
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"]:checked + label {
+    background: var(--pink);
+    box-shadow: 0 0 15px 3px var(--yellow);
+  }
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    background-color: var(--pink);
+    border: none;
+    color: white;
+    padding: 0.85rem 2.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 35px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(235, 93, 152, 0.6);
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: var(--purple);
+    box-shadow: 0 7px 22px rgba(177, 140, 255, 0.8);
+  }
+  button:disabled {
+    background-color: var(--purple);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+</style>
+</head>
+<body>
+  <header>Discover the Style Written in Your Soul</header>
+  <div class="instructions">Choose the option that feels the most like you. Trust your gut — your style says more than just clothes.</div>
+
+  <div class="progress-bar-container" aria-label="Progress">
+    <div class="progress-bar" style="width:30%"></div>
+  </div>
+
+  <form id="quizForm">
+    <fieldset>
+      <legend>3. What’s your go-to outfit formula?</legend>
+
+      <input type="radio" id="q3a" name="q3" value="A" />
+      <label for="q3a">Oversized blazer + neutral trousers + gold hoops</label>
+
+      <input type="radio" id="q3b" name="q3" value="B" />
+      <label for="q3b">Floral dress + ballet flats + dainty jewelry</label>
+
+      <input type="radio" id="q3c" name="q3" value="C" />
+      <label for="q3c">Oversized tee + mini skirt + chunky boots</label>
+
+      <input type="radio" id="q3d" name="q3" value="D" />
+      <label for="q3d">Flared jeans + vintage blouse + tote bag</label>
+
+      <input type="radio" id="q3e" name="q3" value="E" />
+      <label for="q3e">Matching workout set + bomber jacket + designer bag</label>
+
+      <input type="radio" id="q3f" name="q3" value="F" />
+      <label for="q3f">Collared blouse + structured skirt + Mary Janes</label>
+
+      <input type="radio" id="q3g" name="q3" value="G" />
+      <label for="q3g">Wide-leg pants + cropped tank + woven bag</label>
+
+      <input type="radio" id="q3h" name="q3" value="H" />
+      <label for="q3h">Off-the-shoulder top + pastel skirt + hair bows</label>
+    </fieldset>
+
+    <div class="nav-buttons">
+      <button type="button" id="btnBack">Back</button>
+      <button type="submit" id="btnNext" disabled>Next</button>
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById('quizForm');
+    const nextBtn = document.getElementById('btnNext');
+    const backBtn = document.getElementById('btnBack');
+
+    form.addEventListener('change', () => {
+      const checked = form.querySelector('input[name="q3"]:checked');
+      nextBtn.disabled = !checked;
+    });
+
+    backBtn.addEventListener('click', () => {
+      location.href = 'quiz-2.html';
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const selected = form.querySelector('input[name="q3"]:checked').value;
+      sessionStorage.setItem('quiz_q3', selected);
+      location.href = 'quiz-4.html';
+    });
+
+    window.addEventListener('load', () => {
+      const saved = sessionStorage.getItem('quiz_q3');
+      if (saved) {
+        const input = form.querySelector(`input[value="${saved}"]`);
+        if (input) {
+          input.checked = true;
+          nextBtn.disabled = false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

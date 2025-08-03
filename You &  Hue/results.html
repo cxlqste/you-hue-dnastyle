@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>You & Hue — Your Style DNA Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --pink: #eb5d98;
+    --purple: #b18cff;
+    --charcoal: #2d2d2d;
+    --white-bg: #fff0f2;
+    --yellow: #ffc75f;
+  }
+  body {
+    margin: 0; padding: 2rem 1rem 3rem;
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white-bg);
+    color: var(--charcoal);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 1.2s forwards;
+  }
+  @keyframes fadeIn {
+    to {opacity: 1;}
+  }
+  header {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 2.8rem;
+    color: var(--pink);
+    text-align: center;
+    margin-bottom: 1rem;
+    user-select: none;
+    text-shadow:
+      2px 2px var(--yellow);
+  }
+  .archetype-name {
+    font-size: 2rem;
+    color: var(--purple);
+    text-align: center;
+    margin-bottom: 0.3rem;
+    user-select: none;
+    font-weight: 700;
+  }
+  .archetype-desc {
+    font-size: 1.2rem;
+    color: var(--charcoal);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
+    user-select: none;
+  }
+  .dm-message {
+    background: var(--pink);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 35px;
+    box-shadow: 0 6px 15px rgba(235, 93, 152, 0.7);
+    max-width: 420px;
+    margin: 0 auto 3rem;
+    user-select: none;
+  }
+  .summary {
+    border: 2px solid var(--yellow);
+    border-radius: 15px;
+    background: #fff6d4;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+    color: var(--charcoal);
+    user-select: none;
+  }
+  button {
+    background-color: var(--pink);
+    border: none;
+    color: white;
+    padding: 0.85rem 3.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 35px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(235, 93, 152, 0.6);
+    transition: background-color 0.3s ease;
+    user-select: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  button:hover {
+    background-color: var(--purple);
+    box-shadow: 0 7px 22px rgba(177, 140, 255, 0.8);
+  }
+  .footer-text {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+    text-align: center;
+    font-style: italic;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <header>Your Style DNA Results</header>
+
+  <div class="archetype-name" id="archetypeName">[Archetype Name]</div>
+  <div class="archetype-desc" id="archetypeDesc">[Brief description of your style archetype goes here.]</div>
+
+  <div class="dm-message">
+    To unlock your full personalized style guide and outfit combos, DM us at <strong>@youandhue</strong> to buy your Style DNA Delivery Package!
+  </div>
+
+  <div class="summary" id="answersSummary">
+    <!-- Placeholder for optional summary of quiz answers -->
+    Your unique style choices shape your style DNA. This is just the beginning!
+  </div>
+
+  <button id="restartBtn" aria-label="Restart Quiz">Restart Quiz</button>
+
+  <div class="footer-text">
+    &copy; 2025 You & Hue — All rights reserved
+  </div>
+
+<script>
+  // Archetype data: name and brief descriptions — edit as you wish
+  const archetypes = {
+    A: {name: "Clean Minimalist", desc: "You embrace timeless simplicity and elegant, structured pieces."},
+    B: {name: "Whimsical Romantic", desc: "Your style is soft, dreamy, and full of gentle romantic energy."},
+    C: {name: "Edgy It-Girl", desc: "Bold, rebellious, and daring — you love to make a statement."},
+    D: {name: "Vintage Dreamer", desc: "You cherish nostalgia and artistic, unique layers."},
+    E: {name: "Street Siren", desc: "Trendy, confident, and powerfully modern."},
+    F: {name: "Coquette Academic", desc: "Classic, polished, with a touch of intellectual charm."},
+    G: {name: "Earthy Muse", desc: "Natural, relaxed, and connected to nature."},
+    H: {name: "Softcore Sweetheart", desc: "Cute, flirty, and effortlessly sweet."}
+  };
+
+  // Get answers from sessionStorage, count answers by letter
+  const answers = [];
+  for(let i=1; i<=10; i++) {
+    const val = sessionStorage.getItem(`quiz_q${i}`);
+    if(val) answers.push(val);
+  }
+
+  // Count frequency of each letter
+  const counts = {};
+  answers.forEach(letter => {
+    counts[letter] = (counts[letter] || 0) + 1;
+  });
+
+  // Find the most frequent answer letter (archetype)
+  let maxCount = 0;
+  let archetypeKey = null;
+  for(const key in counts) {
+    if(counts[key] > maxCount) {
+      maxCount = counts[key];
+      archetypeKey = key;
+    }
+  }
+
+  // Set archetype name and desc or fallback if none found
+  const nameElem = document.getElementById('archetypeName');
+  const descElem = document.getElementById('archetypeDesc');
+  if(archetypeKey && archetypes[archetypeKey]){
+    nameElem.textContent = archetypes[archetypeKey].name;
+    descElem.textContent = archetypes[archetypeKey].desc;
+  } else {
+    nameElem.textContent = "Style Explorer";
+    descElem.textContent = "You have a unique mix of style influences that's all your own!";
+  }
+
+  // Optional: summarize answers (simple letter list)
+  const summaryElem = document.getElementById('answersSummary');
+  summaryElem.innerHTML = `<strong>Your Style Choices:</strong> ${answers.join(', ')}`;
+
+  // Restart button clears sessionStorage and reloads first quiz page
+  const restartBtn = document.getElementById('restartBtn');
+  restartBtn.addEventListener('click', () => {
+    sessionStorage.clear();
+    location.href = 'quiz-1.html';
+  });
+</script>
+</body>
+</html>
